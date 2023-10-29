@@ -35,11 +35,11 @@ const startGame = () =>
     setGame();
 }
 
-const setGame = () =>
+const setGame = () => 
 {
     snake = ['00', '01', '02', '03'];
     score = snake.length;
-    direction = 'arrowRight';
+    direction = 'ArrowRight';
     boardSquares = Array.from(Array(boardSize), () => new Array(boardSize).fill(squareTypes.emptySquare));
     console.log(boardSquares);
     board.innerHTML = '';
@@ -47,7 +47,7 @@ const setGame = () =>
     createBoard();
 }
 
-createBoard()
+const createBoard = () =>
 {
     boardSquares.forEach( (row, rowIndex) => 
     {
@@ -55,6 +55,10 @@ createBoard()
         {
             const squareValue = '${rowIndex}${columnIndex}';
             const squareElement = document.createElement('div');
+            squareElement.setAttribute('class', 'square emptySquare');
+            squareElement.setAttribute('id', squareValue);
+            board.appendChild(squareElement);
+            emptySquares.push(squareValue);
         })
     })
 }
