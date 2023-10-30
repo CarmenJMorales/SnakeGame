@@ -23,6 +23,7 @@
  {
     display: none;
     color: red;
+    font-size: 30px;
  }
 
  .boardInfo 
@@ -37,11 +38,18 @@
     background-color: rgb(239, 100, 100);
     border: none;
     color: white;
+    font-size: 35px;
  }
 
  #scoreBoard 
  {
     display: inline-flex;
+    font-size: 30px;
+ }
+
+ #score
+ {
+   font-size: 30px;
  }
 
  .square 
@@ -62,4 +70,9 @@
  .foodSquare
  {
     background-color: #f35a69;
+ }
+
+ #pageTitle
+ {
+   font-size: 60px;
  }
