@@ -16,10 +16,10 @@ const squareTypes =
 
 const directions =
     {
-        arrowUp: -10,
-        arrowDown: 10,
-        arrowRight: 1,
-        arrowLeft: -1,
+        ArrowUp: -10,
+        ArrowDown: 10,
+        ArrowRight: 1,
+        ArrowLeft: -1,
     };
 
 //Game Variables
@@ -50,7 +50,6 @@ const drawSquare = (square, type) =>
     {
         emptySquares.splice(emptySquares.indexOf(square), 1);
     }
-
 }
 
 const createBoard = () => 
@@ -73,7 +72,7 @@ const setGame = () =>
 {
     snake = ['00']; //Serpiente inicial
     score = snake.length;
-    direction = 'arrowRight';
+    direction = 'ArrowRight';
     boardSquares = Array.from(Array(boardSize), () => new Array(boardSize).fill(squareTypes.emptySquare));
     console.log(boardSquares);
     board.innerHTML = '';
@@ -97,21 +96,21 @@ const setDirection = newDirection =>
     direction = newDirection;
 }
 
-const directionEvent = key => 
+const directionEvent = KeyboardEvent => 
 {
-    switch (key.code) 
+    switch (KeyboardEvent.code) 
     {
-        case 'arrowUp':
-            direction != 'arrowDown' && setDirection(key.code)
+        case "ArrowUp":
+            direction != 'ArrowDown' && setDirection(KeyboardEvent.code)
             break;
-        case 'arrowDown':
-            direction != 'arrowUp' && setDirection(key.code)
+        case "ArrowDown":
+            direction != 'ArrowUp' && setDirection(KeyboardEvent.code)
             break;
-        case 'arrowLeft':
-            direction != 'arrowRight' && setDirection(key.code)
+        case "ArrowLeft":
+            direction != 'ArrowRight' && setDirection(KeyboardEvent.code)
             break;
-        case 'arrowRight':
-            direction != 'arrowLeft' && setDirection(key.code)
+        case "ArrowRight":
+            direction != 'ArrowLeft' && setDirection(KeyboardEvent.code)
             break;
     }
 }
@@ -125,8 +124,8 @@ const moveSnake = () =>
 
     if( newSquare < 0 || 
         newSquare > boardSize * boardSize  ||
-        (direction === 'arrowRight' && column == 0) ||
-        (direction === 'arrowLeft' && column == 9 ||
+        (direction === 'ArrowRight' && column == 0) ||
+        (direction === 'ArrowLeft' && column == 9 ||
         boardSquares[row][column] === squareTypes.snakeSquare) ) 
     {
         gameOver();
