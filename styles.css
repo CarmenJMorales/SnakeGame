@@ -1,6 +1,6 @@
 * 
 {
-    font-family: Lato, Share Tech Mono;
+    font-family: Rowdies, Share Tech Mono;
 }
 
 #board, .boardInfo 
@@ -22,6 +22,7 @@
  #gameOver 
  {
     display: none;
+    color: red;
  }
 
  .boardInfo 

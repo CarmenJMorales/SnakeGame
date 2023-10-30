@@ -6,7 +6,7 @@ const gameOverSign = document.getElementById('gameOver');
 
 // Game Settings
 const boardSize = 10;
-const gameSpeed = 100;
+const gameSpeed = 150;
 const squareTypes = 
     {
         emptySquare: 0,
