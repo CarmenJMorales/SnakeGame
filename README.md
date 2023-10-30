@@ -5,3 +5,6 @@
   
   
 Juego de la serpiente realizado en html, css y javascript  
+
+
+![gif que muestra el funcionamiento del juego](https://github.com/CarmenJMorales/SnakeGame/blob/main/gif_prueba.gif)
