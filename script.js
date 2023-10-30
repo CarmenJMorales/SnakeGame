@@ -92,54 +92,57 @@ const createRandomFood = () =>
     drawSquare(randomEmptySquare, 'foodSquare');
 }
 
-const directionEvent = () =>
+const setDirection = newDirection => 
 {
-    switch(Key.code)
+    direction = newDirection;
+}
+
+const directionEvent = key => 
+{
+    switch (key.code) 
     {
         case 'arrowUp':
             direction != 'arrowDown' && setDirection(key.code)
             break;
-        
         case 'arrowDown':
-            direction != 'arrowUp' && setDirection(key.code);
+            direction != 'arrowUp' && setDirection(key.code)
             break;
-
-        case 'arrowRight':
-            direction != 'arrowLeft' && setDirection(key.code);
-            break;
-
         case 'arrowLeft':
-            direction != 'arrowRight' && setDirection(key.code);
+            direction != 'arrowRight' && setDirection(key.code)
+            break;
+        case 'arrowRight':
+            direction != 'arrowLeft' && setDirection(key.code)
             break;
     }
 }
 
-const moveSnake = () =>
+const moveSnake = () => 
 {
-    const newSquare = String(Number(snake[snake.length - 1]) + directions[direction])
+    const newSquare = String(
+        Number(snake[snake.length - 1]) + directions[direction])
         .padStart(2, '0');
-
     const [row, column] = newSquare.split('');
 
-    if(newSquare < 0 || newSquare > boardSize * boardSize || (direction === 'arrowRight' && column == 0)
-        || (direction === 'arrowLeft' && column == 9) || (boardSquares[row][column] === squareTypes.snakeSquare))
+    if( newSquare < 0 || 
+        newSquare > boardSize * boardSize  ||
+        (direction === 'arrowRight' && column == 0) ||
+        (direction === 'arrowLeft' && column == 9 ||
+        boardSquares[row][column] === squareTypes.snakeSquare) ) 
     {
         gameOver();
-    }
-    else
+    } 
+    else 
     {
         snake.push(newSquare);
-
-        if(boardSquares[row][column] === squareTypes.foodSquare)
+        if(boardSquares[row][column] === squareTypes.foodSquare) 
         {
             addFood();
-        }
-        else
+        } 
+        else 
         {
             const emptySquare = snake.shift();
             drawSquare(emptySquare, 'emptySquare');
         }
-
         drawSnake();
     }
 }
@@ -166,7 +169,7 @@ const startGame = () =>
     drawSnake();
     updateScore();
     createRandomFood();
-    document.addEventListener('keyDown', directionEvent);
+    document.addEventListener('keydown', directionEvent);
     moveInterval = setInterval( () => moveSnake(), gameSpeed);
 }
 
